@@ -9,10 +9,12 @@ const ctx = canvas.getContext('2d');
 const p = document.querySelectorAll('p')[0];
 const p2 = document.querySelectorAll('p')[1];
 const inp = document.querySelector('input');
-const btn = document.querySelector('button');
+const btn = document.querySelectorAll('button')[0];
 
 const imgbl =new Image();
 imgbl.src = 'block.gif';
+const sePoint = new Audio('swordman-damage2.mp3');
+const seCollision = new Audio('cursor7.mp3');
 
 let start = false
 let blockObj,blockArray,pl,ba
@@ -56,6 +58,26 @@ function onKeyUp(e){
 window.addEventListener('keydown',onKeyDown,false);
 window.addEventListener('keyup',onKeyUp,false);
 
+let smafo=[];
+
+smafo[1] = document.querySelectorAll('button')[1];
+smafo[3] = document.querySelectorAll('button')[2];
+smafo[4] = document.querySelectorAll('button')[3];
+smafo[2] = document.querySelectorAll('button')[4];
+
+function smafoKeyDown(i){
+	keydown[i]=true;
+}
+
+function smafoKeyUp(i){
+	keydown[i]=false;
+}
+
+for (let i=1;i<5;i++){
+	smafo[i].addEventListener("touchstart", smafoKeyDown(i), false);
+	smafo[i].addEventListener("touchend", smafoKeyUp(i), false);
+}
+
 btn.onclick=function(){
 	let val=inp.value.split(',');
 	width=parseInt(val[0])
@@ -98,6 +120,8 @@ class block{
 			blockArray[i]=0
 			blockObj[i]=[-200,-200];
 			point++
+			sePoint.currentTime =0;
+			sePoint.play();
 		}
 	}
 }
@@ -119,9 +143,13 @@ class ball{
 		this.y+=this.vy;
 		if (this.x<5||this.x>295){
 			this.vx=-this.vx
+			seCollision.currentTime =0;
+			seCollision.play();
 		}
 		if (this.y<5){
 			this.vy=-this.vy
+			seCollision.currentTime =0;
+			seCollision.play();
 		}
 		if (this.y>410){
 			start = false;
@@ -156,6 +184,8 @@ class bar{
 		if (this.x-ba.x>-25 && this.x-ba.x<25 && ba.y>298 && ba.y<302){
 			ba.vx=ba.vx+this.vx/2
 			ba.vy=-ba.vy;
+			seCollision.currentTime =0;
+			seCollision.play();
 		}
 	}
 }
