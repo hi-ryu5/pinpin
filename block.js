@@ -70,7 +70,7 @@ smafo[1] = document.querySelectorAll('button')[4];
 
 
 for (let i=0;i<4;i++){
-	smafo[i].addEventListener("touchstart", function(){
+	smafo[i].addEventListener("mousedown", function(){
 	keydown[i]=true;
 	switch (i){
 		case 2:
@@ -81,7 +81,7 @@ for (let i=0;i<4;i++){
 		break;
 	}
 }, false);
-	smafo[i].addEventListener("touchend", function(){
+	smafo[i].addEventListener("mouseup", function(){
 	keydown[i]=false;
 }, false);
 }
