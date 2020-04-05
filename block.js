@@ -60,22 +60,30 @@ window.addEventListener('keyup',onKeyUp,false);
 
 let smafo=[];
 
-smafo[1] = document.querySelectorAll('button')[1];
-smafo[3] = document.querySelectorAll('button')[2];
-smafo[4] = document.querySelectorAll('button')[3];
-smafo[2] = document.querySelectorAll('button')[4];
+smafo[0] = document.querySelectorAll('button')[1];
+smafo[2] = document.querySelectorAll('button')[2];
+smafo[3] = document.querySelectorAll('button')[3];
+smafo[1] = document.querySelectorAll('button')[4];
 
-function smafoKeyDown(i){
+
+
+
+
+for (let i=0;i<4;i++){
+	smafo[i].addEventListener("touchstart", function(){
 	keydown[i]=true;
-}
-
-function smafoKeyUp(i){
+	switch (i){
+		case 2:
+		start=true;
+		break;
+		case 3:
+		init();
+		break;
+	}
+}, false);
+	smafo[i].addEventListener("touchend", function(){
 	keydown[i]=false;
-}
-
-for (let i=1;i<5;i++){
-	smafo[i].addEventListener("touchstart", smafoKeyDown(i), false);
-	smafo[i].addEventListener("touchend", smafoKeyUp(i), false);
+}, false);
 }
 
 btn.onclick=function(){
