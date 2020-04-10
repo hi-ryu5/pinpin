@@ -138,16 +138,16 @@ function encode(){
 	for (const e of str){
 		result += encodelist[e]||e;
 	}
-	result = result.replace("PPfacerightPP","(　＾ϖ＾)");
-	result = result.replace("PPfaceleftPP","(＾ϖ＾　)");
+	result = result.replace(new RegExp("PPfacerightPP","g"),"(　＾ϖ＾)");
+	result = result.replace(new RegExp("PPfaceleftPP","g"),"(＾ϖ＾　)");
 	ango.value = result;
 }
 
 function decode(){
 	let str = ango.value||"";
 	let result = str;
-	result = result.replace("(　＾ϖ＾)","PPfacerightPP");
-	result = result.replace("(＾ϖ＾　)","PPfaceleftPP");
+	result = result.replace(new RegExp("\\(　＾ϖ＾\\)","g"),"PPfacerightPP");
+	result = result.replace(new RegExp("\\(＾ϖ＾　\\)","g"),"PPfaceleftPP");
 	for (const key of Object.keys(encodelist)){
 		result = result.replace(new RegExp(encodelist[key],"g"),key);
 	}
