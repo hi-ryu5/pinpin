@@ -14,17 +14,18 @@
 		<textarea id="playlog" placeholder="プレイログ" readonly></textarea>
 		<hr>
 		<div>
-		<button>←</button><button>→</button><button>↑</button><button>↓</button>
+		<button>←</button><button>↑</button><button>↓</button><button>→</button>
 		<style>
 		body{
 			background-color:#ccc;
-			font:16px'MS PGothic';
+			font:16px'MS PGothic'
 		}
 		button{
 			width: 80px;
 			height: 80px;
 			display: inline;
 			font:60px'MS PGothic';
+			-webkit-user-select:none;
 		}
 		#game {
 			width: 320px;
@@ -188,9 +189,9 @@ window.addEventListener('keydown',onKeyDown,false);
 window.addEventListener('keyup',onKeyUp,false);
 
 smafo[0] = document.querySelectorAll('button')[0];
-smafo[1] = document.querySelectorAll('button')[1];
-smafo[2] = document.querySelectorAll('button')[2];
-smafo[3] = document.querySelectorAll('button')[3];
+smafo[2] = document.querySelectorAll('button')[1];
+smafo[3] = document.querySelectorAll('button')[2];
+smafo[1] = document.querySelectorAll('button')[3];
 
 for (let i=0;i<4;i++){
 	smafo[i].addEventListener("touchstart", function(){
